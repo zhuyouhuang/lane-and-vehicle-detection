@@ -44,7 +44,7 @@ right_lane = Lane()
 frame_width = 1280
 frame_height = 720
 
-LANEWIDTH = 3.7  # highway lane width in US: 3.7 meters
+LANEWIDTH = 3.7  
 input_scale = 1
 output_frame_scale = 1
 N = 4 # buffer previous N lines
@@ -609,14 +609,17 @@ def lane_process(img, visualization=False):
     _, single_view, lane_info = create_output_frame(offcenter, pts, img_undist_, fps, curvature, curve_direction, binary_sub)
     return img_undist_, single_view, lane_info
 
-
 if __name__ == "__main__":
-    img=plt.imread('D:/04.jpg')
-    #ave_binary=find_edges(img, s_thresh=s_thresh, sx_thresh=sx_thresh, dir_thresh=dir_thresh)
-    #warper=warper(img, M)
-    a,b,c=lane_process(img)
-#   cv2.imshow('0',b)
-#   cv2.waitKey(0)
+    
+    filename = 'examples/test4.jpg'
+    image = plt.imread(filename)
+    
+    a,b,c=lane_process(image)
+    plt.subplot(1,2,1)
     plt.imshow(a)
+    plt.subplot(1,2,2)
+    plt.imshow(b)
     plt.show()
+    
+
      
